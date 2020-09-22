@@ -1,18 +1,25 @@
 /* eslint-disable prettier/prettier */
-// Import a library to help create a component
+import 'react-native-gesture-handler';
 import React from 'react';
-import { AppRegistry, View } from 'react-native';
-import Header from './src/components/Header';
-import PhotoList from './src/components/PhotoList';
+import { AppRegistry } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import PhotoFullScreen from './src/screens/PhotoFullScreen';
 
-// Create a component
-const App = () => (
-	<View>
-		<Header headerText={'Photo Gallery'} />
-		<PhotoList />
-	</View>
+
+const Stack = createStackNavigator();
+
+const PhotoStack = () => (
+	<NavigationContainer>
+		<Stack.Navigator>
+			<Stack.Screen name="Home">
+				{props => <HomeScreen{...props} />}
+			</Stack.Screen>
+			<Stack.Screen name="PhotoFullScreen">
+				{props => <PhotoFullScreen{...props} />}
+			</Stack.Screen>
+		</Stack.Navigator>
+	</NavigationContainer>
 );
-
-// Render it to the device
-
-AppRegistry.registerComponent('TestApp', () => App);
+AppRegistry.registerComponent('TestApp', () => PhotoStack);

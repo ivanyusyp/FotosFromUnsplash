@@ -1,15 +1,17 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import PhotoFullScreen from '../screens/PhotoFullScreen';
 
-
-const PhotoDetail = ({ item }) => {
-	const onPressed = () => console.log('button is pressed');
+const PhotoDetail = ({ navigation, item, id }) => {
+	console.log('idinPhotoDetail', id);
 	return (
 		<View style={styles.viewStyle}>
 			<TouchableOpacity
-				onPress={onPressed}
+				onPress={() => {
+					navigation.navigate('PhotoFullScreen');
+				}}
 			>
 				<Image
 					style={styles.tinyLogo}
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
 		height: 200,
 	},
 	viewStyle: {
-		flexDirection: 'column',
 		alignItems: 'center',
 		paddingVertical: 10,
 	},

@@ -1,26 +1,29 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import PhotoFullScreen from '../screens/PhotoFullScreen';
 
-const PhotoDetail = ({ navigation, item, id }) => {
-	console.log('idinPhotoDetail', id);
+
+
+const PhotoDetail = (props) => {
+	console.log('idinPhotoDetail', props);
 	return (
-		<View style={styles.viewStyle}>
+		<View style={styles.viewStyle} >
 			<TouchableOpacity
 				onPress={() => {
-					navigation.navigate('PhotoFullScreen');
+					props.navigation.navigate('PhotoFullScreen');
+					console.log('current id', props.id);
+					props.photo.current.unshift(props.id);
 				}}
 			>
 				<Image
 					style={styles.tinyLogo}
 					source={{
-						uri: item.urls.small,
+						uri: props.item.urls.small,
 					}}
 				/>
 			</TouchableOpacity>
-			<Text>{item.user.username}</Text>
+			<Text>{props.item.user.username}</Text>
 		</View >
 	);
 };

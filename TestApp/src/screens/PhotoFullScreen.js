@@ -9,7 +9,6 @@ const PhotoFullScreen = (props) => {
 	const [isLoading, setLoading] = useState(false);
 	const [data, setData] = useState([]);
 	console.log('props FUll SCREEN', props);
-	// qbpM-CLCRtg
 	useEffect(() => {
 		fetch(`${BASE_URL}/${props.photo.current[0]}?client_id=${MY_ACCESS_KEY}`)
 			.then((response) => response.json())
@@ -17,7 +16,6 @@ const PhotoFullScreen = (props) => {
 			.catch((error) => console.error(error))
 			.finally(() => setLoading(false));
 	}, []);
-	// console.log('data', data);
 	return (
 		<View >
 			{isLoading ? <ActivityIndicator /> : (

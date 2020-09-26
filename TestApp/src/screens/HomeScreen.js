@@ -14,7 +14,6 @@ const HomeScreen = props => {
 	useEffect(() => {
 		fetch(`${BASE_URL}?client_id=${MY_ACCESS_KEY}`)
 			.then((response) => response.json())
-			// .then((json) => console.log(json))
 			.then((json) => setData(json))
 			.catch((error) => console.error(error))
 			.finally(() => setLoading(false));
@@ -39,8 +38,7 @@ const HomeScreen = props => {
 const styles = StyleSheet.create({
 	viewStyle: {
 		alignContent: 'space-between',
-		paddingBottom: 25,
-
+		backgroundColor: '#607D8B',
 	},
 });
 

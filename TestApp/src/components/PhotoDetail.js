@@ -6,14 +6,14 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 const PhotoDetail = (props) => {
-	console.log('idinPhotoDetail', props);
+	const navigateToPhotoFullScreen = () => props.navigation.navigate('PhotoFullScreen');
+	const addCurrentIdToState = () => props.photo.current.unshift(props.id);
 	return (
 		<View style={styles.viewStyle} >
 			<TouchableOpacity
 				onPress={() => {
-					props.navigation.navigate('PhotoFullScreen');
-					console.log('current id', props.id);
-					props.photo.current.unshift(props.id);
+					navigateToPhotoFullScreen();
+					addCurrentIdToState();
 				}}
 			>
 				<Image
@@ -23,7 +23,7 @@ const PhotoDetail = (props) => {
 					}}
 				/>
 			</TouchableOpacity>
-			<Text>{props.item.user.username}</Text>
+			<Text style={styles.textStyle}>{props.item.user.username}</Text>
 		</View >
 	);
 };
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingVertical: 10,
 	},
+	textStyle: {
+		color: 'white',
+	}
 });
 
 export default PhotoDetail;

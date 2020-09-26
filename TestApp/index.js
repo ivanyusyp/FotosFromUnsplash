@@ -18,7 +18,21 @@ const PhotoStack = () => (
 	<Provider store={store}>
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="Home">
+				<Stack.Screen
+					name="Gallery"
+					options={{
+						title: 'Photo Gallery',
+						headerStyle: {
+							backgroundColor: '#616161',
+						},
+						headerTintColor: '#F5F5F5',
+						headerTitleStyle: {
+							fontWeight: '400',
+							fontFamily: 'Arial',
+							textAlign: 'center',
+						},
+					}}
+				>
 					{props => <HomeScreen{...props} />}
 				</Stack.Screen>
 				<Stack.Screen name="PhotoFullScreen">
@@ -28,5 +42,6 @@ const PhotoStack = () => (
 		</NavigationContainer>
 	</Provider>
 );
+
 
 AppRegistry.registerComponent('TestApp', () => PhotoStack);
